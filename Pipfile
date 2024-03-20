@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[dev-packages]
+mypy = "1.7.1"
+pytest = "7.4.3"
+pytest-cov = "*"
+pytest-mypy = "*"
+typing_extensions = "*"
+
+[requires]
+python_version = "3.11"
+
+[scripts]
+test = "pytest"
+mypy = "mypy src"
+test-current = "pytest -m current"
