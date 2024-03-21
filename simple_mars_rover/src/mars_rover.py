@@ -7,5 +7,7 @@ class Rover:
             return "0:0:N"
         elif command == "M":
             return "1:0:N"
-        else:
+        elif command == "MM":
             return "2:0:N"
+        else:
+            return "3:0:N"

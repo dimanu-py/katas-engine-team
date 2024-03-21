@@ -24,3 +24,10 @@ class TestRover:
         final_position = rover.execute("MM")
 
         assert final_position == "2:0:N"
+
+    def test_move_forward_three_cells(self):
+        rover = Rover()
+
+        final_position = rover.execute("MMM")
+
+        assert final_position == "3:0:N"
