@@ -3,11 +3,5 @@
 class Rover:
 
     def execute(self, command: str) -> str:
-        if command == "":
-            return "0:0:N"
-        elif command == "M":
-            return "1:0:N"
-        elif command == "MM":
-            return "2:0:N"
-        else:
-            return "3:0:N"
+        vertical_position = len(command)
+        return f"{vertical_position}:0:N"

@@ -1,3 +1,5 @@
+import pytest
+
 from simple_mars_rover.src.mars_rover import Rover
 
 
@@ -11,23 +13,18 @@ class TestRover:
         # Then
         assert final_position == "0:0:N"
 
-    def test_move_forward_one_cell(self):
+    @pytest.mark.parametrize("steps, expected_final_position",
+                             [
+                                 (0, "0:0:N"),
+                                 (1, "1:0:N"),
+                                 (2, "2:0:N"),
+                                 (9, "9:0:N"),
+                              ]
+
+    )
+    def test_move_forward(self, steps, expected_final_position):
         rover = Rover()
 
-        final_position = rover.execute("M")
+        final_position = rover.execute("M" * steps)
 
-        assert final_position == "1:0:N"
-
-    def test_move_forward_two_cells(self):
-        rover = Rover()
-
-        final_position = rover.execute("MM")
-
-        assert final_position == "2:0:N"
-
-    def test_move_forward_three_cells(self):
-        rover = Rover()
-
-        final_position = rover.execute("MMM")
-
-        assert final_position == "3:0:N"
+        assert final_position == expected_final_position
