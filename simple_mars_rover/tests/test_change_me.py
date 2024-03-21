@@ -32,3 +32,11 @@ class TestRover:
         final_position = rover.execute("M" * steps)
 
         assert final_position == expected_final_position
+
+
+    def test_single_right_rotation(self):
+        rover = Rover()
+
+        final_position = rover.execute("R")
+
+        assert final_position == "0:0:E"
