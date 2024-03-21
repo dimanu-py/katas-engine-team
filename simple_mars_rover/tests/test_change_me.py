@@ -1,13 +1,13 @@
-from simple_mars_rover.src.mars_rover import ChangeMe
+from simple_mars_rover.src.mars_rover import Rover
 
 
-class TestChangeMe:
+class TestRover:
 
-    def test_change_me(self):
+    def test_execute(self):
         # Given
-        my_class = ChangeMe()
+        rover = Rover()
 
         # When
-
+        final_position = rover.execute()
         # Then
-        assert my_class.change_me() == True
+        assert final_position is not None

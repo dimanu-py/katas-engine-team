@@ -1,6 +1,6 @@
 
 
-class ChangeMe:
+class Rover:
 
-    def change_me(self) -> bool:
+    def execute(self) -> bool:
         return True
