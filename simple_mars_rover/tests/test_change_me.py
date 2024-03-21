@@ -47,3 +47,10 @@ class TestRover:
         final_position = rover.execute("RR")
 
         assert final_position == "0:0:S"
+
+    def test_triple_right_rotation(self):
+        rover = Rover()
+
+        final_position = rover.execute("RRR")
+
+        assert final_position == "0:0:W"
