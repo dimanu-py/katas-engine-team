@@ -40,3 +40,10 @@ class TestRover:
         final_position = rover.execute("R")
 
         assert final_position == "0:0:E"
+
+    def test_double_right_rotation(self):
+        rover = Rover()
+
+        final_position = rover.execute("RR")
+
+        assert final_position == "0:0:S"
