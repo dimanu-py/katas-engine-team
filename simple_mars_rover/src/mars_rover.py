@@ -3,4 +3,9 @@
 class Rover:
 
     def execute(self, command: str) -> str:
-        return "1:0:N" if command == "M" else "0:0:N"
+        if command == "":
+            return "0:0:N"
+        elif command == "M":
+            return "1:0:N"
+        else:
+            return "2:0:N"
