@@ -4,7 +4,7 @@
 
 ## Description
 
-This repository is created to practice and learn [Extreme Programming](https://asana.com/es/resources/extreme-programming-xp) concepts such as Test Driven Development or Pair Programming among others.
+This repository is created to practice and learn [Extreme Programming](https://asana.com/es/resources/extreme-programming-xp) concepts such as Test Driven Development or Pair Programming, among others.
 
 The project will have one folder per kata to avoid creating several repositories. Each folder will contain:
 - A **README.md** file explaining kata's requirements and what concepts will be practiced.
