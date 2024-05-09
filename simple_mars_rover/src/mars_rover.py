@@ -1,5 +1,14 @@
+from enum import Enum
+
 GRID_SIZE = 10
 ORIENTATION = {0: 'N', 1: 'E', 2: 'S', 3: 'W'}
+
+
+class Orientation(int, Enum):
+    NORTH = 0
+    EAST = 1
+    SOUTH = 2
+    WEST = 3
 
 
 class Rover:
