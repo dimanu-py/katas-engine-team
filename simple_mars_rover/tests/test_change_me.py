@@ -4,7 +4,6 @@ from simple_mars_rover.src.mars_rover import Rover
 
 
 class TestRover:
-
     def test_remains_initial_position_without_commands(self):
         # Given
         rover = Rover()
@@ -24,8 +23,8 @@ class TestRover:
                                  (25, "5:0:N"),
                                  (95, "5:0:N"),
                               ]
-
     )
+    
     def test_move_forward(self, steps, expected_final_position):
         rover = Rover()
 
@@ -38,21 +37,17 @@ class TestRover:
                               ("RR", "0:0:S"),
                               ("RRR", "0:0:W"),
                               ("RRRR", "0:0:N"),
-                              ("RRRRR", "0:0:E")])
-    def test_n_right_rotations(self, rotation_command, expected_final_position):
-        rover = Rover()
-
-        final_position = rover.execute(rotation_command)
-
-        assert final_position == expected_final_position
-
-    @pytest.mark.parametrize("rotation_command, expected_final_position",
-                             [("L", "0:0:W"),
+                              ("RRRRR", "0:0:E"),
+                              ("L", "0:0:W"),
                               ("LL", "0:0:S"),
                               ("LLL", "0:0:E"),
                               ("LLLL", "0:0:N"),
-                              ("LLLLL", "0:0:W")])
-    def test_n_left_rotation(self, rotation_command, expected_final_position):
+                              ("LLLLL", "0:0:W"),
+                              ("RL", "0:0:N"),
+                              ("LR", "0:0:N")])
+    def test_static_rotations(self, rotation_command, expected_final_position):
         rover = Rover()
+
         final_position = rover.execute(rotation_command)
+
         assert final_position == expected_final_position
