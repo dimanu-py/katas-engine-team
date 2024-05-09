@@ -27,7 +27,7 @@ The project will have one folder per kata to avoid creating several repositories
 5. Activate the virtual environment
    - Windows: `.\env\Scripts\activate.bat`
    - Linux & Mac: `source venv/bin/activate`
-6. Install package dependencies.
+6. Install package dependencies
 
    <details><summary>Using pip</summary>
    
