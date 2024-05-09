@@ -6,6 +6,8 @@ class Rover:
 
     def __init__(self) -> None:
         self.orientation = 0
+        self.horizontal_position = 0
+        self.vertical_position = 0
 
     def execute(self, command: str) -> str:
         for c in command:
@@ -14,5 +16,5 @@ class Rover:
             if c == "L":
                 self.orientation -= 1
 
-        vertical_position = command.count('M') % GRID_SIZE
-        return f"{vertical_position}:0:{ORIENTATION[self.orientation % 4]}"
+        self.vertical_position = command.count('M') % GRID_SIZE
+        return f"{self.vertical_position}:0:{ORIENTATION[self.orientation % 4]}"
