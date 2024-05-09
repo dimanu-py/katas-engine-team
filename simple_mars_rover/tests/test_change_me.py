@@ -51,3 +51,12 @@ class TestRover:
         final_position = rover.execute(rotation_command)
 
         assert final_position == expected_final_position
+
+
+#    @pytest.mark.parametrize("command, expected_final_position", [("RM", "0:1:E")])
+#    def test_movement_combinations(self, command, expected_final_position):
+#        rover = Rover()
+#
+#        final_position = rover.execute(command)
+#
+#        assert final_position == expected_final_position
