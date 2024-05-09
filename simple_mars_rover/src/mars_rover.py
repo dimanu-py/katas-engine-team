@@ -7,6 +7,7 @@ class Rover:
     def __init__(self) -> None:
         self.orientation = 0
         self.vertical_position = 0
+        self.horizontal_position = 0
 
     def execute(self, command: str) -> str:
         for c in command:
@@ -19,6 +20,11 @@ class Rover:
                     self.vertical_position += 1
                 elif self.orientation == 2:
                     self.vertical_position -= 1
+                elif self.orientation == 1:
+                    self.horizontal_position += 1
+                elif self.orientation == 3:
+                    self.horizontal_position -= 1
 
         self.vertical_position %= GRID_SIZE
-        return f"{self.vertical_position}:0:{ORIENTATION[self.orientation % 4]}"
+        self.horizontal_position %= GRID_SIZE
+        return f"{self.vertical_position}:{self.horizontal_position}:{ORIENTATION[self.orientation % 4]}"

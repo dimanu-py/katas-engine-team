@@ -24,7 +24,6 @@ class TestRover:
                                  (95, "5:0:N"),
                               ]
     )
-    
     def test_move_forward(self, steps, expected_final_position):
         rover = Rover()
 
@@ -52,11 +51,10 @@ class TestRover:
 
         assert final_position == expected_final_position
 
+    @pytest.mark.parametrize("command, expected_final_position", [("RM", "0:1:E")])
+    def test_movement_combinations(self, command, expected_final_position):
+        rover = Rover()
 
-#    @pytest.mark.parametrize("command, expected_final_position", [("RM", "0:1:E")])
-#    def test_movement_combinations(self, command, expected_final_position):
-#        rover = Rover()
-#
-#        final_position = rover.execute(command)
-#
-#        assert final_position == expected_final_position
+        final_position = rover.execute(command)
+
+        assert final_position == expected_final_position
