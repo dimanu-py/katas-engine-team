@@ -7,5 +7,6 @@ class Rover:
     def execute(self, command: str) -> str:
 
         number_rigth_rotations = command.count('R') % 4
+        number_left_rotations = command.count('L') % 4
         vertical_position = command.count('M') % GRID_SIZE
-        return f"{vertical_position}:0:{ORIENTATION[number_rigth_rotations]}"
+        return f"{vertical_position}:0:{ORIENTATION[(number_rigth_rotations - number_left_rotations) % 4]}"
