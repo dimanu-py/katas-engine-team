@@ -78,8 +78,8 @@ class Rover:
 
     def rotate_left(self) -> None:
         self.orientation = (self.orientation - ROTATION_STEP) % NUMBER_ORIENTATIONS
-        if isinstance(self.orientation_advanced, North):
-            self.orientation_advanced = self.orientation_advanced.rotate_left()
+
+        self.orientation_advanced = self.orientation_advanced.rotate_left()
 
     def rotate_right(self) -> None:
         self.orientation = (self.orientation + ROTATION_STEP) % NUMBER_ORIENTATIONS
