@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import Union
 
 ROTATION_STEP = 1
 FORWARD_STEP = 1
@@ -15,10 +16,20 @@ class Orientation(int, Enum):
     WEST = 3
 
 
+class North:
+    def rotate_left(self):
+        return West()
+
+
+class West:
+    pass
+
+
 class Rover:
 
     def __init__(self) -> None:
         self.orientation = Orientation.NORTH
+        self.orientation_advanced: Union[North, West] = North()
         self.vertical_position = 0
         self.horizontal_position = 0
 
@@ -53,6 +64,8 @@ class Rover:
 
     def rotate_left(self) -> None:
         self.orientation = (self.orientation - ROTATION_STEP) % NUMBER_ORIENTATIONS
+        if isinstance(self.orientation_advanced, North):
+            self.orientation_advanced = self.orientation_advanced.rotate_left()
 
     def rotate_right(self) -> None:
         self.orientation = (self.orientation + ROTATION_STEP) % NUMBER_ORIENTATIONS
