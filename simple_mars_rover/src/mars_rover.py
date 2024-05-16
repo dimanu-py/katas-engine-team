@@ -1,3 +1,4 @@
+from abc import ABC, abstractmethod
 from enum import Enum
 from typing import Union
 
@@ -15,14 +16,27 @@ class Orientation(int, Enum):
     SOUTH = 2
     WEST = 3
 
+class OrientationAdvanced(ABC):
 
-class North:
-    def rotate_left(self):
+    @abstractmethod
+    def rotate_left(self) -> "OrientationAdvanced":
+        pass
+
+
+class North(OrientationAdvanced):
+    def rotate_left(self) -> OrientationAdvanced:
         return West()
 
 
-class West:
-    pass
+class South(OrientationAdvanced):
+
+    def rotate_left(self) -> "OrientationAdvanced":
+        return self
+
+
+class West(OrientationAdvanced):
+    def rotate_left(self) -> OrientationAdvanced:
+        return South()
 
 
 class Rover:
