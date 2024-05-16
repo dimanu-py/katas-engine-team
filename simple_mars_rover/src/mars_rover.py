@@ -27,7 +27,7 @@ class Rover:
             if c == "R":
                 self.rotate_right()
             elif c == "L":
-                self.orientation = (self.orientation - ROTATION_STEP) % NUMBER_ORIENTATIONS
+                self.rotate_left()
             elif c == "M":
                 if self.orientation == Orientation.NORTH:
                     self.vertical_position += FORWARD_STEP
@@ -44,6 +44,9 @@ class Rover:
         self.horizontal_position %= GRID_SIZE
 
         return f"{self.vertical_position}:{self.horizontal_position}:{ORIENTATION[self.orientation % 4]}"
+
+    def rotate_left(self) -> None:
+        self.orientation = (self.orientation - ROTATION_STEP) % NUMBER_ORIENTATIONS
 
     def rotate_right(self) -> None:
         self.orientation = (self.orientation + ROTATION_STEP) % NUMBER_ORIENTATIONS
