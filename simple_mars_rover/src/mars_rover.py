@@ -31,6 +31,9 @@ class Rover:
         for step in command:
             command_instructions[step]()
 
+        return str(self)
+
+    def __str__(self):
         return f"{self.vertical_position}:{self.horizontal_position}:{ORIENTATION[self.orientation % 4]}"
 
     def move(self) -> None:
