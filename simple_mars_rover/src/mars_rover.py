@@ -4,6 +4,7 @@ ROTATION_STEP = 1
 FORWARD_STEP = 1
 
 GRID_SIZE = 10
+NUMBER_ORIENTATIONS = 4
 ORIENTATION = {0: 'N', 1: 'E', 2: 'S', 3: 'W'}
 
 
@@ -24,9 +25,9 @@ class Rover:
     def execute(self, command: str) -> str:
         for c in command:
             if c == "R":
-                self.orientation += ROTATION_STEP
+                self.orientation = (self.orientation + ROTATION_STEP) % NUMBER_ORIENTATIONS
             elif c == "L":
-                self.orientation -= ROTATION_STEP
+                self.orientation = (self.orientation - ROTATION_STEP) % NUMBER_ORIENTATIONS
             elif c == "M":
                 if self.orientation == Orientation.NORTH:
                     self.vertical_position += FORWARD_STEP
@@ -36,6 +37,8 @@ class Rover:
                     self.horizontal_position += FORWARD_STEP
                 elif self.orientation == Orientation.WEST:
                     self.horizontal_position -= FORWARD_STEP
+                else:
+                    raise NotImplementedError
 
         self.vertical_position %= GRID_SIZE
         self.horizontal_position %= GRID_SIZE
