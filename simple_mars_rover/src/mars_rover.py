@@ -23,13 +23,13 @@ class Rover:
         self.horizontal_position = 0
 
     def execute(self, command: str) -> str:
-        for c in command:
-            if c == "R":
-                self.rotate_right()
-            elif c == "L":
-                self.rotate_left()
-            elif c == "M":
-                self.move()
+        command_instructions = {
+            "R": self.rotate_right,
+            "L": self.rotate_left,
+            "M": self.move
+        }
+        for step in command:
+            command_instructions[step]()
 
         return f"{self.vertical_position}:{self.horizontal_position}:{ORIENTATION[self.orientation % 4]}"
 
