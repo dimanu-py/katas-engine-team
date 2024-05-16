@@ -29,21 +29,24 @@ class Rover:
             elif c == "L":
                 self.rotate_left()
             elif c == "M":
-                if self.orientation == Orientation.NORTH:
-                    self.vertical_position += FORWARD_STEP
-                elif self.orientation == Orientation.SOUTH:
-                    self.vertical_position -= FORWARD_STEP
-                elif self.orientation == Orientation.EAST:
-                    self.horizontal_position += FORWARD_STEP
-                elif self.orientation == Orientation.WEST:
-                    self.horizontal_position -= FORWARD_STEP
-                else:
-                    raise NotImplementedError
+                self.move()
+
+        return f"{self.vertical_position}:{self.horizontal_position}:{ORIENTATION[self.orientation % 4]}"
+
+    def move(self) -> None:
+        if self.orientation == Orientation.NORTH:
+            self.vertical_position += FORWARD_STEP
+        elif self.orientation == Orientation.SOUTH:
+            self.vertical_position -= FORWARD_STEP
+        elif self.orientation == Orientation.EAST:
+            self.horizontal_position += FORWARD_STEP
+        elif self.orientation == Orientation.WEST:
+            self.horizontal_position -= FORWARD_STEP
+        else:
+            raise NotImplementedError
 
         self.vertical_position %= GRID_SIZE
         self.horizontal_position %= GRID_SIZE
-
-        return f"{self.vertical_position}:{self.horizontal_position}:{ORIENTATION[self.orientation % 4]}"
 
     def rotate_left(self) -> None:
         self.orientation = (self.orientation - ROTATION_STEP) % NUMBER_ORIENTATIONS
