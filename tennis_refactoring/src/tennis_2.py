@@ -13,14 +13,8 @@ class TennisGame2:
 
     def score(self) -> str:
         result = ""
-        if (self.points_player_one == self.points_player_two and self.points_player_one < 3):
-            if (self.points_player_one == 0):
-                result = "Love"
-            if (self.points_player_one == 1):
-                result = "Fifteen"
-            if (self.points_player_one == 2):
-                result = "Thirty"
-            result += "-All"
+        result = self.get_result_small_tie(result)
+
         if (self.points_player_one == self.points_player_two and self.points_player_one > 2):
             result = "Deuce"
 
@@ -78,6 +72,17 @@ class TennisGame2:
             result = f"Win for {self.name_player_one}"
         if (self.points_player_two >= 4 and self.points_player_one >= 0 and (self.points_player_two - self.points_player_one) >= 2):
             result = f"Win for {self.name_player_two}"
+        return result
+
+    def get_result_small_tie(self, result: str) -> str:
+        if (self.points_player_one == self.points_player_two and self.points_player_one < 3):
+            if (self.points_player_one == 0):
+                result = "Love"
+            if (self.points_player_one == 1):
+                result = "Fifteen"
+            if (self.points_player_one == 2):
+                result = "Thirty"
+            result += "-All"
         return result
 
     def increase_p1_score(self) -> None:
