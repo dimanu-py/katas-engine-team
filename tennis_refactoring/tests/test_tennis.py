@@ -10,6 +10,7 @@ from tennis_refactoring.src.tennis_6 import TennisGame6
 test_cases = [
     (0, 0, "Love-All", 'player1', 'player2'),
     (1, 1, "Fifteen-All", 'player1', 'player2'),
+    (1, 1, "Fifteen-All", 'Nadal', 'Federer'),
     (2, 2, "Thirty-All", 'player1', 'player2'),
     (3, 3, "Deuce", 'player1', 'player2'),
     (4, 4, "Deuce", 'player1', 'player2'),
