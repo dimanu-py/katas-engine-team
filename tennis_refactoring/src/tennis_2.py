@@ -80,14 +80,6 @@ class TennisGame2:
             result = f"Win for {self.name_player_two}"
         return result
 
-    def SetP1Score(self, number):
-        for i in range(number):
-            self.increase_p1_score()
-
-    def SetP2Score(self, number):
-        for i in range(number):
-            self.increase_p2_score()
-
     def increase_p1_score(self) -> None:
         self.points_player_one += 1
 
