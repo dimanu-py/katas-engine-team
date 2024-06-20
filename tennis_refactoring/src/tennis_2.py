@@ -12,7 +12,6 @@ class TennisGame2:
             self.increase_p2_score()
 
     def score(self) -> str:
-        result = ""
         players_at_tie = self.points_player_one == self.points_player_two
 
         if players_at_tie:
