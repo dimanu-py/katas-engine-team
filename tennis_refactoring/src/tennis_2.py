@@ -15,7 +15,7 @@ class TennisGame2:
         result = ""
         players_at_tie = self.points_player_one == self.points_player_two
 
-        if (players_at_tie):
+        if players_at_tie:
             if self.points_player_one == 0:
                 result = "Love-All"
             elif self.points_player_one == 1:
@@ -27,57 +27,57 @@ class TennisGame2:
 
         result_player_one = ""
         result_player_two = ""
-        if (self.points_player_one > 0 and self.points_player_two == 0):
-            if (self.points_player_one == 1):
+        if self.points_player_one > 0 and self.points_player_two == 0:
+            if self.points_player_one == 1:
                 result_player_one = "Fifteen"
-            if (self.points_player_one == 2):
+            if self.points_player_one == 2:
                 result_player_one = "Thirty"
-            if (self.points_player_one == 3):
+            if self.points_player_one == 3:
                 result_player_one = "Forty"
 
             result_player_two = "Love"
             result = result_player_one + "-" + result_player_two
-        if (self.points_player_two > 0 and self.points_player_one == 0):
-            if (self.points_player_two == 1):
+        if self.points_player_two > 0 and self.points_player_one == 0:
+            if self.points_player_two == 1:
                 result_player_two = "Fifteen"
-            if (self.points_player_two == 2):
+            if self.points_player_two == 2:
                 result_player_two = "Thirty"
-            if (self.points_player_two == 3):
+            if self.points_player_two == 3:
                 result_player_two = "Forty"
 
             result_player_one = "Love"
             result = result_player_one + "-" + result_player_two
 
-        if (self.points_player_one > self.points_player_two and self.points_player_one < 4):
-            if (self.points_player_one == 2):
+        if self.points_player_one > self.points_player_two and self.points_player_one < 4:
+            if self.points_player_one == 2:
                 result_player_one = "Thirty"
-            if (self.points_player_one == 3):
+            if self.points_player_one == 3:
                 result_player_one = "Forty"
-            if (self.points_player_two == 1):
+            if self.points_player_two == 1:
                 result_player_two = "Fifteen"
-            if (self.points_player_two == 2):
+            if self.points_player_two == 2:
                 result_player_two = "Thirty"
             result = result_player_one + "-" + result_player_two
-        if (self.points_player_two > self.points_player_one and self.points_player_two < 4):
-            if (self.points_player_two == 2):
+        if self.points_player_two > self.points_player_one and self.points_player_two < 4:
+            if self.points_player_two == 2:
                 result_player_two = "Thirty"
-            if (self.points_player_two == 3):
+            if self.points_player_two == 3:
                 result_player_two = "Forty"
-            if (self.points_player_one == 1):
+            if self.points_player_one == 1:
                 result_player_one = "Fifteen"
-            if (self.points_player_one == 2):
+            if self.points_player_one == 2:
                 result_player_one = "Thirty"
             result = result_player_one + "-" + result_player_two
 
-        if (self.points_player_one > self.points_player_two and self.points_player_two >= 3):
+        if self.points_player_one > self.points_player_two and self.points_player_two >= 3:
             result = f"Advantage {self.name_player_one}"
 
-        if (self.points_player_two > self.points_player_one and self.points_player_one >= 3):
+        if self.points_player_two > self.points_player_one and self.points_player_one >= 3:
             result = f"Advantage {self.name_player_two}"
 
-        if (self.points_player_one >= 4 and self.points_player_two >= 0 and (self.points_player_one - self.points_player_two) >= 2):
+        if self.points_player_one >= 4 and self.points_player_two >= 0 and (self.points_player_one - self.points_player_two) >= 2:
             result = f"Win for {self.name_player_one}"
-        if (self.points_player_two >= 4 and self.points_player_one >= 0 and (self.points_player_two - self.points_player_one) >= 2):
+        if self.points_player_two >= 4 and self.points_player_one >= 0 and (self.points_player_two - self.points_player_one) >= 2:
             result = f"Win for {self.name_player_two}"
         return result
 
