@@ -1,17 +1,17 @@
 class TennisGame2:
-    def __init__(self, planer_one_name, player_two_name):
+    def __init__(self, planer_one_name: str, player_two_name: str) -> None:
         self.name_player_one = planer_one_name
         self.name_player_two = player_two_name
         self.points_player_one = 0
         self.points_player_two = 0
 
-    def won_point(self, player_name):
+    def won_point(self, player_name: str) -> None:
         if player_name == self.name_player_one:
             self.increase_p1_score()
         else:
             self.increase_p2_score()
 
-    def score(self):
+    def score(self) -> str:
         result = ""
         if (self.points_player_one == self.points_player_two and self.points_player_one < 3):
             if (self.points_player_one == 0):
@@ -88,8 +88,8 @@ class TennisGame2:
         for i in range(number):
             self.increase_p2_score()
 
-    def increase_p1_score(self):
+    def increase_p1_score(self) -> None:
         self.points_player_one += 1
 
-    def increase_p2_score(self):
+    def increase_p2_score(self) -> None:
         self.points_player_two += 1
