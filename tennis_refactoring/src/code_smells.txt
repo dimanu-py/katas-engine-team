@@ -1,0 +1,12 @@
+1. naming -> self.P1Score() no da detalles de que hace la función
+2. PEP8 -> nombres de funciones en mayúscula
+3. Los atributos de player1Name no se usan para nada
+4. "player1" está hardcodeado, esto puede dar lugar a bugs
+5. Mas hardcodeo -> result = "Advantage player1" no depende del nombre del jugador
+6. Los métodos SetP1Score y P1Score son enrevesados de más
+7. Magic strings
+8. El nombre Set es confuso porque no expone la lógica de la función
+9. El método score es demasiado largo
+10. Primitive obsession
+11. Object oriented abuser -> ifs anidados poco óptimos
+12. Temporary fields
