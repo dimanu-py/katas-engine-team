@@ -71,7 +71,6 @@ class TestTennisGame1:
 
 class TestTennisGame2:
 
-    @pytest.mark.skip
     @pytest.mark.parametrize('p1Points p2Points score p1Name p2Name'.split(), test_cases)
     def test_get_score(self, p1Points, p2Points, score, p1Name, p2Name):
         game = play_game(TennisGame2, p1Points, p2Points, p1Name, p2Name)
