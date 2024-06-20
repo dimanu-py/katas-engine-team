@@ -24,34 +24,10 @@ class TennisGame2:
             else:
                 result = "Deuce"
 
+        elif max(self.points_player_one, self.points_player_two) < 4:
+                result = self.get_result_one_player_has_zero_points(self.points_player_one, self.points_player_two)
+
         else:
-            result_player_one = ""
-            result_player_two = ""
-
-            result, result_player_one, result_player_two = self.get_result_one_player_has_zero_points(result_player_one,
-                                                                                                      result_player_two)
-
-            if self.points_player_one > self.points_player_two and self.points_player_one < 4:
-                if self.points_player_one == 2:
-                    result_player_one = "Thirty"
-                if self.points_player_one == 3:
-                    result_player_one = "Forty"
-                if self.points_player_two == 1:
-                    result_player_two = "Fifteen"
-                if self.points_player_two == 2:
-                    result_player_two = "Thirty"
-                result = result_player_one + "-" + result_player_two
-            if self.points_player_two > self.points_player_one and self.points_player_two < 4:
-                if self.points_player_two == 2:
-                    result_player_two = "Thirty"
-                if self.points_player_two == 3:
-                    result_player_two = "Forty"
-                if self.points_player_one == 1:
-                    result_player_one = "Fifteen"
-                if self.points_player_one == 2:
-                    result_player_one = "Thirty"
-                result = result_player_one + "-" + result_player_two
-
             if self.points_player_one > self.points_player_two and self.points_player_two >= 3:
                 result = f"Advantage {self.name_player_one}"
 
@@ -64,25 +40,23 @@ class TennisGame2:
                 result = f"Win for {self.name_player_two}"
         return result
 
-    def get_result_one_player_has_zero_points(self, result_player_one: str, result_player_two: str) -> tuple:
-        player_one_won = self.points_player_one > self.points_player_two
-        result_winning_player, result_losing_player = (result_player_one, result_player_two) if player_one_won else (result_player_two, result_player_one)
-        winning_player_points, losing_player_points = (self.points_player_one, self.points_player_two) if player_one_won else (self.points_player_two, self.points_player_one)
+    def get_result_one_player_has_zero_points(self, result_player_one: int, result_player_two: int) -> str:
+        score_player_one = self.score_to_str(result_player_one)
+        score_player_two = self.score_to_str(result_player_two)
+        return score_player_one + "-" + score_player_two
 
-        if winning_player_points > 0 and losing_player_points == 0:
-            if winning_player_points == 1:
-                result_winning_player = "Fifteen"
-            if winning_player_points == 2:
-                result_winning_player = "Thirty"
-            if winning_player_points == 3:
-                result_winning_player = "Forty"
-
-            result_losing_player = "Love"
-            result_player_one, result_player_two = (result_winning_player, result_losing_player) if player_one_won else (result_losing_player, result_winning_player)
-            result = result_player_one + "-" + result_player_two
+    def score_to_str(self, score_player: int) -> str:
+        if score_player == 0:
+            result = "Love"
+        elif score_player == 1:
+            result = "Fifteen"
+        elif score_player == 2:
+            result = "Thirty"
+        elif score_player == 3:
+            result = "Forty"
         else:
-            result = ""
-        return result, result_player_one, result_player_two
+            raise Exception("la cagué")
+        return result
 
     def increase_p1_score(self) -> None:
         self.points_player_one += 1
