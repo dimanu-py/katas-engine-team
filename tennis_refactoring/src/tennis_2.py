@@ -25,22 +25,20 @@ class TennisGame2:
                 result = "Deuce"
 
         elif max(self.points_player_one, self.points_player_two) < 4:
-                result = self.get_result_one_player_has_zero_points(self.points_player_one, self.points_player_two)
+            result = self.get_result_without_tie_during_game(self.points_player_one, self.points_player_two)
 
         else:
-            if self.points_player_one > self.points_player_two and self.points_player_two >= 3:
+            if self.points_player_one > self.points_player_two >= 3:
                 result = f"Advantage {self.name_player_one}"
-
-            if self.points_player_two > self.points_player_one and self.points_player_one >= 3:
+            if self.points_player_two > self.points_player_one >= 3:
                 result = f"Advantage {self.name_player_two}"
-
             if self.points_player_one >= 4 and (self.points_player_one - self.points_player_two) >= 2:
                 result = f"Win for {self.name_player_one}"
             if self.points_player_two >= 4 and (self.points_player_two - self.points_player_one) >= 2:
                 result = f"Win for {self.name_player_two}"
         return result
 
-    def get_result_one_player_has_zero_points(self, result_player_one: int, result_player_two: int) -> str:
+    def get_result_without_tie_during_game(self, result_player_one: int, result_player_two: int) -> str:
         score_player_one = self.score_to_str(result_player_one)
         score_player_two = self.score_to_str(result_player_two)
         return score_player_one + "-" + score_player_two
@@ -55,7 +53,7 @@ class TennisGame2:
         elif score_player == 3:
             result = "Forty"
         else:
-            raise Exception("la cagué")
+            raise Exception("La cagué")
         return result
 
     def increase_p1_score(self) -> None:
