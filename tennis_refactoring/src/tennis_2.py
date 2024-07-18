@@ -1,4 +1,11 @@
 class TennisGame2:
+    score_without_tie: dict[int, str] = {
+        0: "Love",
+        1: "Fifteen",
+        2: "Thirty",
+        3: "Forty",
+    }
+
     def __init__(self, planer_one_name: str, player_two_name: str) -> None:
         self.name_player_one = planer_one_name
         self.name_player_two = player_two_name
@@ -44,14 +51,8 @@ class TennisGame2:
         return score_player_one + "-" + score_player_two
 
     def score_to_str(self, score_player: int) -> str:
-        score_dict = {
-            0: "Love",
-            1: "Fifteen",
-            2: "Thirty",
-            3: "Forty",
-        }
         try:
-            return score_dict[score_player]
+            return self.score_without_tie[score_player]
         except KeyError as e:
             raise e.add_note("La cagué")
 
