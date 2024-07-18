@@ -28,13 +28,14 @@ class TennisGame2:
             result = self.get_result_without_tie_during_game(self.points_player_one, self.points_player_two)
 
         else:
-            if self.points_player_one > self.points_player_two >= 3:
+            point_difference = self.points_player_one - self.points_player_two
+            if point_difference == 1:
                 result = f"Advantage {self.name_player_one}"
-            if self.points_player_two > self.points_player_one >= 3:
+            if point_difference == -1:
                 result = f"Advantage {self.name_player_two}"
-            if self.points_player_one >= 4 and (self.points_player_one - self.points_player_two) >= 2:
+            if point_difference >= 2:
                 result = f"Win for {self.name_player_one}"
-            if self.points_player_two >= 4 and (self.points_player_two - self.points_player_one) >= 2:
+            if point_difference <= -2:
                 result = f"Win for {self.name_player_two}"
         return result
 
