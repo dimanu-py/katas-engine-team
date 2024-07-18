@@ -19,9 +19,7 @@ class TennisGame2:
             self.increase_p2_score()
 
     def score(self) -> str:
-        players_at_tie = self.points_player_one == self.points_player_two
-
-        if players_at_tie:
+        if self.points_player_one == self.points_player_two:
             result = self.get_tied_result()
 
         elif max(self.points_player_one, self.points_player_two) < 4:
