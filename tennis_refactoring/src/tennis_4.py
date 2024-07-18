@@ -13,7 +13,7 @@ class TennisGame4:
 
     def score(self):
         if self.isDeuce():
-            result = Deuce(self).getResult()
+            result = TennisResult("Deuce", "")
         elif self.serverHasWon():
             result = GameServer(self).getResult()
         elif self.receiverHasWon():
@@ -53,14 +53,6 @@ class TennisResult:
         if self.serverScore == self.receiverScore:
             return self.serverScore + "-All"
         return self.serverScore + "-" + self.receiverScore
-
-
-class Deuce:
-    def __init__(self, game):
-        self.game = game
-
-    def getResult(self):
-        return TennisResult("Deuce", "")
 
 
 class GameServer:
