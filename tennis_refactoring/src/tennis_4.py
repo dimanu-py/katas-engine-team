@@ -16,11 +16,14 @@ class TennisGame4:
             result = Deuce(self, None).getResult()
         elif self.serverHasWon():
             result = GameServer(self, None).getResult()
+        elif self.receiverHasWon():
+            result = GameReceiver(self, None).getResult()
+        elif self.serverHasAdvantage():
+            result = AdvantageServer(self, None).getResult()
+        elif self.receiverHasAdvantage():
+            result = AdvantageReceiver(self, None).getResult()
         else:
-            result = GameReceiver(
-                            self, AdvantageServer(
-                                self, AdvantageReceiver(
-                                    self, DefaultResult(self)))).getResult()
+            result = DefaultResult(self).getResult()
         return result.format()
 
     def receiverHasAdvantage(self):
