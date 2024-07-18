@@ -1,4 +1,6 @@
 class TennisGame4:
+    scores = ["Love", "Fifteen", "Thirty", "Forty"]
+
     def __init__(self, player1Name, player2Name):
         self.server = player1Name
         self.receiver = player2Name
@@ -15,15 +17,15 @@ class TennisGame4:
         if self.isDeuce():
             result = TennisResult("Deuce", "")
         elif self.serverHasWon():
-            result = GameServer(self).getResult()
+            result = TennisResult("Win for " + self.server, "")
         elif self.receiverHasWon():
-            result = GameReceiver(self).getResult()
+            result = TennisResult("Win for " + self.receiver, "")
         elif self.serverHasAdvantage():
-            result = AdvantageServer(self).getResult()
+            result = TennisResult("Advantage " + self.server, "")
         elif self.receiverHasAdvantage():
-            result = AdvantageReceiver(self).getResult()
+            result = TennisResult("Advantage " + self.receiver, "")
         else:
-            result = DefaultResult(self).getResult()
+            result = TennisResult(self.scores[self.serverScore], self.scores[self.receiverScore])
         return result.format()
 
     def receiverHasAdvantage(self):
@@ -54,43 +56,3 @@ class TennisResult:
             return self.serverScore + "-All"
         return self.serverScore + "-" + self.receiverScore
 
-
-class GameServer:
-    def __init__(self, game):
-        self.game = game
-
-    def getResult(self):
-        return TennisResult("Win for " + self.game.server, "")
-
-
-class GameReceiver:
-    def __init__(self, game):
-        self.game = game
-
-    def getResult(self):
-        return TennisResult("Win for " + self.game.receiver, "")
-
-
-class AdvantageServer:
-    def __init__(self, game):
-        self.game = game
-
-    def getResult(self):
-        return TennisResult("Advantage " + self.game.server, "")
-
-
-class AdvantageReceiver:
-    def __init__(self, game):
-        self.game = game
-
-    def getResult(self):
-        return TennisResult("Advantage " + self.game.receiver, "")
-
-
-class DefaultResult:
-    def __init__(self, game):
-        self.game = game
-        self.scores = ["Love", "Fifteen", "Thirty", "Forty"]
-
-    def getResult(self):
-        return TennisResult(self.scores[self.game.serverScore], self.scores[self.game.receiverScore])
