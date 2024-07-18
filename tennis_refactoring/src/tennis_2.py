@@ -22,14 +22,7 @@ class TennisGame2:
         players_at_tie = self.points_player_one == self.points_player_two
 
         if players_at_tie:
-            if self.points_player_one == 0:
-                result = "Love-All"
-            elif self.points_player_one == 1:
-                result = "Fifteen-All"
-            elif self.points_player_one == 2:
-                result = "Thirty-All"
-            else:
-                result = "Deuce"
+            result = self.get_tied_result()
 
         elif max(self.points_player_one, self.points_player_two) < 4:
             result = self.get_result_without_tie_during_game(self.points_player_one, self.points_player_two)
@@ -43,6 +36,13 @@ class TennisGame2:
                 result = f"Win for {self.name_player_one}"
             if self.points_player_two >= 4 and (self.points_player_two - self.points_player_one) >= 2:
                 result = f"Win for {self.name_player_two}"
+        return result
+
+    def get_tied_result(self) -> str:
+        if self.points_player_one < 3:
+            result = f"{self.score_to_str(self.points_player_one)}-All"
+        else:
+            result = "Deuce"
         return result
 
     def get_result_without_tie_during_game(self, result_player_one: int, result_player_two: int) -> str:
