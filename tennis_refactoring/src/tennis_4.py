@@ -14,19 +14,14 @@ class TennisGame4:
             self.receiver_score += 1
 
     def score(self):
-        if self.is_deuce():
-            result = TennisResult("Deuce", "")
-        elif self.server_has_won():
-            result = TennisResult("Win for " + self.server, "")
-        elif self.receiver_has_won():
-            result = TennisResult("Win for " + self.receiver, "")
-        elif self.server_has_advantage():
-            result = TennisResult("Advantage " + self.server, "")
-        elif self.receiver_has_advantage():
-            result = TennisResult("Advantage " + self.receiver, "")
-        else:
-            result = TennisResult(self.scores[self.server_score], self.scores[self.receiver_score])
-        return result.format()
+        return (
+                self.is_deuce() and TennisResult("Deuce", "") or
+                self.server_has_won() and TennisResult("Win for " + self.server, "") or
+                self.receiver_has_won() and TennisResult("Win for " + self.receiver, "") or
+                self.server_has_advantage() and TennisResult("Advantage " + self.server, "") or
+                self.receiver_has_advantage() and TennisResult("Advantage " + self.receiver, "") or
+                TennisResult(self.scores[self.server_score], self.scores[self.receiver_score])
+        ).format()
 
     def receiver_has_advantage(self):
         return self.receiver_score >= 4 and (self.receiver_score - self.server_score) == 1
