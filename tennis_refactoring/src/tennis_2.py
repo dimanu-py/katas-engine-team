@@ -44,17 +44,16 @@ class TennisGame2:
         return score_player_one + "-" + score_player_two
 
     def score_to_str(self, score_player: int) -> str:
-        if score_player == 0:
-            result = "Love"
-        elif score_player == 1:
-            result = "Fifteen"
-        elif score_player == 2:
-            result = "Thirty"
-        elif score_player == 3:
-            result = "Forty"
-        else:
-            raise Exception("La cagué")
-        return result
+        score_dict = {
+            0: "Love",
+            1: "Fifteen",
+            2: "Thirty",
+            3: "Forty",
+        }
+        try:
+            return score_dict[score_player]
+        except KeyError as e:
+            raise e.add_note("La cagué")
 
     def increase_p1_score(self) -> None:
         self.points_player_one += 1
