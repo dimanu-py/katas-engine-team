@@ -21,21 +21,20 @@ class TennisGame2:
     def score(self) -> str:
         if self.points_player_one == self.points_player_two:
             result = self.get_tied_result()
-
         elif max(self.points_player_one, self.points_player_two) < 4:
             result = self.get_result_without_tie_during_game(self.points_player_one, self.points_player_two)
-
         else:
-            point_difference = self.points_player_one - self.points_player_two
-            if point_difference == 1:
-                result = f"Advantage {self.name_player_one}"
-            if point_difference == -1:
-                result = f"Advantage {self.name_player_two}"
-            if point_difference >= 2:
-                result = f"Win for {self.name_player_one}"
-            if point_difference <= -2:
-                result = f"Win for {self.name_player_two}"
+            result = self.get_result_when_advantage()
         return result
+
+    def get_result_when_advantage(self) -> str:
+        point_difference = self.points_player_one - self.points_player_two
+        winning_player = self.name_player_one if point_difference > 0 else self.name_player_two
+
+        if abs(point_difference) == 1:
+            return f"Advantage {winning_player}"
+
+        return f"Win for {winning_player}"
 
     def get_tied_result(self) -> str:
         if self.points_player_one < 3:
