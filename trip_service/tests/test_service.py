@@ -15,7 +15,8 @@ class SeamTripService(TripService):
         return self.user
 
     def find_trips_by_user(self, user):
-        return self.user.get_trips()
+        friends_trips = self.user.get_friends()[0].get_trips()
+        return friends_trips
 
 
 class TestTripService:
