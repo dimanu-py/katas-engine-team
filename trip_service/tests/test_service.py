@@ -3,6 +3,7 @@ from typing import Union
 
 from trip_service.src.exceptions import UserNotLoggedInException
 from trip_service.src.service import TripService
+from trip_service.src.trip import Trip
 from trip_service.src.user import User
 
 
@@ -42,3 +43,14 @@ class TestTripService:
 
         trips = trip_service.get_trips_by_user(friendless_user)
         assert len(trips) == 0
+
+    def test_user_can_see_friends_trips(self) -> None:
+        user = User()
+        friend = User()
+        friend.add_trip(trip=Trip())
+        user.add_friend(friend)
+        friend.add_friend(user)
+
+        trip_service = SeamTripService(user=user)
+        trips = trip_service.get_trips_by_user(friend)
+        assert trips == friend.get_trips()
