@@ -14,6 +14,9 @@ class SeamTripService(TripService):
     def get_logged_user(self) -> User:
         return self.user
 
+    def find_trips_by_user(self, user):
+        return self.user.get_trips()
+
 
 class TestTripService:
 
@@ -26,6 +29,14 @@ class TestTripService:
 
     def test_user_without_friends_returns_empty_trip_list(self) -> None:
         friendless_user = User()
+        trip_service = SeamTripService(user=friendless_user)
+
+        trips = trip_service.get_trips_by_user(friendless_user)
+        assert len(trips) == 0
+
+    def test_user_is_friend_with_itself(self) -> None:
+        friendless_user = User()
+        friendless_user.add_friend(friendless_user)
         trip_service = SeamTripService(user=friendless_user)
 
         trips = trip_service.get_trips_by_user(friendless_user)
